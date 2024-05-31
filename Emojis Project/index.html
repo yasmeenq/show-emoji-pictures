@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background: tomato;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .imgStyle{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Create List of Images</h1>
+    <p>Write in textbox name of image and load it.
+        you can select from the list below :</p>
+    <ol class="txtList">
+        <li>poop.png</li>
+        <li>sea.png</li>
+        <li>smile.png</li>
+        <li>star.png</li>
+        <li>sad.png</li>
+    </ol>
+    <input type="text" id="name">
+    <button class="add" onclick="add()">Add picture</button>
+    <ul id="list">
+    </ul>
+    <script>
+        function add(){
+            let arr = ['poop.png','sad.png','sea.png','smile.png','star.png'];
+            let imgName = document.getElementById('name').value;
+            let ul = document.getElementById('list');
+            let li = document.createElement('li');
+            let img = document.createElement('img');
+            if(arr.includes(imgName)){
+                img.src =  'assets/images/' + imgName;
+                img.classList.add('imgStyle')   
+                li.appendChild(img);
+                ul.appendChild(li);    
+                document.getElementById('name').value = '';
+                remove(imgName.trim());         
+            }else{
+                alert('image does not exist');
+            }
+        }
+        function remove(name){
+            let lst = document.querySelectorAll(".txtList li");
+            for(let i=0; li=lst[i]; i++){
+                if(li.innerText===name){
+                    li.parentNode.removeChild(li);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
